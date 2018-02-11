@@ -1,6 +1,7 @@
 # PANDO
 PANDO - MTL With Tree Based Gradient Boosting
-This repository contains the research code behind the PANDO paper.
+
+This repository contains the **research code** behind the PANDO paper.
 As of now, the code will not install the required packages on its own, so you will need to manually install required packages if they are not already installed on your machine.
 all the necessary files are in this repository.
 
