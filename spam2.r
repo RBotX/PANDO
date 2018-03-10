@@ -227,6 +227,7 @@ fastAUC <- function(probs, class) {
 families=unique(allpreds[,"Family"])
 stests=c()
 pvals=c()
+pvals2=c()
 winnings=0
 for(fam in families){
   idxs=allpreds[,"Family"]==fam
@@ -234,11 +235,15 @@ for(fam in families){
   rc2=pROC::roc(as.factor(allpreds[idxs,"Label"]),as.numeric(allpreds[idxs,"BB"]))
   stests=c(stests,roc.test(rc1,rc2,method="delong",paired=TRUE))
   pvals=c(pvals,roc.test(rc1,rc2,method="delong",paired=TRUE)$p.value)
+  pvals2=c(pvals,roc.test(rc1,rc2,method="delong",paired=TRUE,alternative="less")$p.value)
   winnings=winnings+(rc1$auc[1]>rc2$auc[1])+0
 }
 library(metap)
 sumlog(pvals)
 meanp(pvals)
+
+sumlog(pvals2)
+meanp(pvals2)
 
 
 
